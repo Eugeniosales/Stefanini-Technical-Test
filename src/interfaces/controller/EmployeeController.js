@@ -20,6 +20,7 @@ module.exports = {
         body: JSON.stringify(
           {
             data: employeeSerializer.serializeArray(employees),
+            message: 'success.'
           },
         ),
       };
@@ -38,6 +39,7 @@ module.exports = {
           body: JSON.stringify(
             {
               data: employeeSerializer.serializeObject(employee),
+              message: 'success.'
             },
           ),
         };
@@ -47,7 +49,8 @@ module.exports = {
         statusCode: 404,
         body: JSON.stringify(
           {
-            message: 'not found',
+            data: {},
+            message: 'not found.',
           },
         ),
       };
@@ -66,8 +69,10 @@ module.exports = {
             body: JSON.stringify(
               {
                 data: employeeSerializer.serializeObject(employee),
+                message: 'success.'
               },
             ),
+            isBase64Encoded: false
         };
     },
 
@@ -86,6 +91,7 @@ module.exports = {
         body: JSON.stringify(
           {
             data: employeeSerializer.serializeObject(employee),
+            message: 'success.'
           },
         ),
       };
@@ -99,11 +105,11 @@ module.exports = {
 
       const statusCode = employee ? 200:404;
 
-      const message = employee ? 'deleted':'not found';
+      const message = employee ? 'success.':'not found.';
 
       return {
         statusCode,
-        body: JSON.stringify({ message })
+        body: JSON.stringify({ data: {}, message })
       };
     }
 }

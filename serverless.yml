@@ -23,20 +23,20 @@ custom:
 
 # Routes
 functions:
-  employee-create:
-    handler: src/interfaces/controller/EmployeeController.create
-    events:
-      - http:
-          path: /employee
-          method: POST
-          cors: true
-
   employee-list:
     handler: src/interfaces/controller/EmployeeController.list
     events:
       - http:
           path: /employees
           method: GET
+          cors: true
+
+  employee-create:
+    handler: src/interfaces/controller/EmployeeController.create
+    events:
+      - http:
+          path: /employee
+          method: POST
           cors: true
 
   employee-find:
