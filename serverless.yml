@@ -1,0 +1,80 @@
+service: employee
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: us-east-1
+  environment:
+    tableName: ${self:custom.tableName}
+  iamRoleStatements:
+        - Effect: Allow
+          Action:
+              - dynamodb:*
+          Resource: '*'
+
+plugins:
+  - serverless-offline
+
+custom:
+  tableName: Employee
+
+# Routes
+functions:
+  employee-create:
+    handler: src/interfaces/controller/EmployeeController.create
+    events:
+      - http:
+          path: /employee
+          method: POST
+          cors: true
+
+  employee-list:
+    handler: src/interfaces/controller/EmployeeController.list
+    events:
+      - http:
+          path: /employees
+          method: GET
+          cors: true
+
+  employee-find:
+    handler: src/interfaces/controller/EmployeeController.find
+    events:
+      - http:
+          path: /employee
+          method: GET
+          cors: true
+
+
+  employee-update:
+    handler: src/interfaces/controller/EmployeeController.update
+    events:
+      - http:
+          path: /employee
+          method: PUT
+          cors: true
+
+  employee-delete:
+    handler: src/interfaces/controller/EmployeeController.remove
+    events:
+      - http:
+          path: /employee
+          method: DELETE
+          cors: true
+
+# DynamoDB
+resources:
+  Resources:
+    Employee:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tableName}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
