@@ -1,6 +1,3 @@
-# Stefanini-Technical-Test
-
-
 <h1 align="center">
 Stefanini Technical Test
 </h1>
