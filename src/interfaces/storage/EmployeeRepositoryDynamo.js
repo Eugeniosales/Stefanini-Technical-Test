@@ -23,9 +23,9 @@ class EmployeeRepositoryDynamo {
     }
 
     async create(employeeEntity) {
-        const { age, name, role } = employeeEntity;
+        const { id, age, name, role } = employeeEntity;
         
-        const employee = await this.model.create({ age, name, role });
+        const employee = await this.model.create({ id, age, name, role });
 
         return new Employee(employee.id, employee.age, employee.name, employee.role);
     }

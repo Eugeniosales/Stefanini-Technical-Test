@@ -1,3 +1,4 @@
+const uuid = require('uuid');
 const ListEmployees = require('../../application/useCases/ListEmployees');
 const FindEmployee = require('../../application/useCases/FindEmployee');
 const CreateEmployee = require('../../application/useCases/CreateEmployee');
@@ -60,7 +61,7 @@ module.exports = {
     async create(event) {
         const { age, name, role } = JSON.parse(event.body);
 
-        const employee = await CreateEmployee(age, name, role, { employeeRepository });
+        const employee = await CreateEmployee(uuid.v1(), age, name, role, { employeeRepository });
 
         const employeeSerializer = new EmployeeSerializer();
         

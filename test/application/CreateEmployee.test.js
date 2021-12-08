@@ -7,8 +7,8 @@ test('should create an new employee', async () => {
     const createdEmployee = new Employee('id', 25, 'brad', 'engineer');
     mockEmployeeRepository.create = jest.fn(() => createdEmployee);
 
-    const employee = await CreateEmployee(25, 'brad', 'engineer', { employeeRepository: mockEmployeeRepository });
+    const employee = await CreateEmployee('id', 25, 'brad', 'engineer', { employeeRepository: mockEmployeeRepository });
 
-    expect(mockEmployeeRepository.create).toHaveBeenCalledWith(new Employee(null, 25, 'brad', 'engineer'));
+    expect(mockEmployeeRepository.create).toHaveBeenCalledWith(new Employee('id', 25, 'brad', 'engineer'));
     expect(employee).toEqual(createdEmployee);
 });
