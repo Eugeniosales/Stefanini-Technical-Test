@@ -1,5 +1,5 @@
 <h1 align="center">
-Stefanini Technical Test
+Clean archicteture API POC
 </h1>
 
 <p align="center">API Node.js que implementa um CRUD para gestão de funcionários. </p>
