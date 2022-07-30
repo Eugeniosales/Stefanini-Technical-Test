@@ -10,9 +10,9 @@ Clean archicteture API POC
 
 1. Efetue o download do repositório e e entre na raiz do diretório:
 ``` bash
-$ git clone https://github.com/Eugeniosales/Stefanini-Technical-Test.git
+$ git clone https://github.com/Eugeniosales/clean-archicteture-API-POC.git
 
-$ cd Stefanini-Technical-Test/
+$ cd clean-archicteture-API-POC/
 ```
 
 2. Construa a imagem docker e inicie os testes:
